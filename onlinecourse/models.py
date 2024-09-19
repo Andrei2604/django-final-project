@@ -94,7 +94,7 @@ class Enrollment(models.Model):
     mode = models.CharField(max_length=5, choices=COURSE_MODES, default=AUDIT)
     rating = models.FloatField(default=5.0)
 
-class Quastion(models.Model):
+class Question(models.Model):
     course = models.ForeignKey(Course, on_delete = models.CASCADE)
     content = models.CharField(max_length = 200)
     grade = models.IntegerField(default = 50)
@@ -111,7 +111,7 @@ class Quastion(models.Model):
             return False
 
 class Choice(models.Model):
-    quastion = models.ForeignKey(Quastion, on_delete = models.CASCADE)
+    question = models.ForeignKey(Question, on_delete = models.CASCADE)
     text = models.CharField(max_length = 200)
     is_correct = models.BooleanField(default = False)
 
